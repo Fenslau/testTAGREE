@@ -18,28 +18,37 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
 
-         City::factory(200)->create();
-         Clinic::factory(1000)->create();
-         Doctor::factory(10000)->create();
+         City::factory(2000)->create();
+         Clinic::factory(10000)->create();
+         Doctor::factory(100000)->create();
          Service::factory(1000)->create();
 
-        $clinics = Clinic::all();
-        Doctor::all()->each(function ($doctor) use ($clinics) {
-          $doctor->update(['clinic_id' => $clinics->random()->id]);
+        $clinics = Clinic::chunk(10000, function($clinics){
+            $doctors = Doctor::chunk(10000, function($doctors) use ($clinics) {
+              $doctors->each(function ($doctor) use ($clinics) {
+              $doctor->update(['clinic_id' => $clinics->random()->id]);
+            });
+          });
         });
 
-        $service = Service::all();
-        Doctor::all()->each(function ($doctor) use ($service) {
-          $doctor->services()->attach(
-          $service->random(rand(1, 10))->pluck('id')->toArray()
-          );
+        $service = Service::chunk(10000, function($service){
+          $doctors = Doctor::chunk(10000, function($doctors) use ($service) {
+              $doctors->each(function ($doctor) use ($service) {
+              $doctor->services()->attach(
+              $service->random(rand(1, 10))->pluck('id')->toArray()
+              );
+            });
+          });
         });
 
-        $clinics = Clinic::all();
-        City::all()->each(function ($city) use ($clinics) {
-          $city->clinics()->attach(
-          $clinics->random(rand(1, 10))->pluck('id')->toArray()
-          );
+        $clinics = Clinic::chunk(10000, function($clinics){
+          $cities = City::chunk(10000, function($cities) use ($clinics) {
+              $cities->each(function ($city) use ($clinics) {
+              $city->clinics()->attach(
+              $clinics->random(rand(1, 10))->pluck('id')->toArray()
+              );
+            });
+          });
         });
 
     }

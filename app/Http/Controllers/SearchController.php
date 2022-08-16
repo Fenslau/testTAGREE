@@ -14,7 +14,7 @@ class SearchController extends Controller
       return view('home', compact('cities'));
     }
 
-    public function search(Request $request, SearchInterface $search) {
+    public function search(SearchRequest $request, SearchInterface $search) {
 
       $items = $search->search($request);
       $returnHTML = view('inc.search-result', compact('items'))->render();
