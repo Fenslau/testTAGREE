@@ -11,7 +11,7 @@ class City extends Model
 
     protected $guarded = [];
 
-    public function clinic() {
+    public function clinics() {
         return $this->belongsToMany(Clinic::class);
     }
 }

@@ -11,7 +11,7 @@
       <h1 class="my-3">Поиск врачей, услуг, клиник</h1>
       <form name="search-form" action="{{ route('search') }}" method="post">
         @csrf
-        <div class="input-group m-3">
+        <div class="input-group my-3">
           <input type="text" autocomplete="off" class="border-warning border-right-0 shadow-none form-control" name="search" placeholder="Врачи, клиники, услуги">
           <select multiple size="1" data-placeholder="Город" class="form-control text-truncate chosen-select" name="city[]">
             @foreach ($cities as $city)

@@ -11,7 +11,7 @@ class Service extends Model
 
     protected $guarded = [];
 
-    public function doctor() {
+    public function doctors() {
         return $this->belongsToMany(Doctor::class);
     }
 

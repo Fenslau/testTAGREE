@@ -11,11 +11,11 @@ class Doctor extends Model
 
     protected $guarded = [];
 
-    public function clinic() {
+    public function clinics() {
       return $this->belongsTo(Clinic::class);
     }
 
-    public function service() {
+    public function services() {
         return $this->belongsToMany(Service::class);
     }
 }

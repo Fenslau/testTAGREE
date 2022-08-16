@@ -11,11 +11,11 @@ class Clinic extends Model
 
     protected $guarded = [];
 
-    public function doctor() {
+    public function doctors() {
         return $this->hasMany(Doctor::class);
     }
 
-    public function city() {
+    public function cities() {
         return $this->belongsToMany(City::class);
     }
 }

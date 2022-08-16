@@ -2074,7 +2074,11 @@ $(document).ready(function () {
     var form = document.querySelector('[name="search-form"]');
     var data = new FormData(form);
 
-    if (!data.get('search')) {
+    if (!data.get('city[]')) {
+      var city = document.querySelector('[name="city[]"]');
+      city.setAttribute('data-placeholder', 'Выберите какой-нибудь город');
+      $('[name="city[]"]').trigger('chosen:updated');
+    } else if (!data.get('search')) {
       var search = document.querySelector('[name="search"]');
       search.setAttribute('placeholder', 'Введите ключевое слово для поиска');
     } else {
@@ -2089,7 +2093,7 @@ $(document).ready(function () {
       })["catch"](function (error) {
         $('.toast-header').addClass('bg-danger');
         $('.toast-header').removeClass('bg-success');
-        $('.toast-body').html('Что-то пошло не так. Попробуйте ещё раз или сообщите нам');
+        $('.toast-body').html(error.message);
         $('.toast').toast('show');
       });
     }
