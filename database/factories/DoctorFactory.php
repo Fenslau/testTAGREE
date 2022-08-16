@@ -13,9 +13,10 @@ class DoctorFactory extends Factory
      */
     public function definition()
     {
+
         return [
             'name' => $this->faker->name(),
-            'clinic_id' => \App\Models\Clinic::factory()
+            'clinic_id' => 1
         ];
     }
 }
