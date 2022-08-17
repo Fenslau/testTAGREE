@@ -14,8 +14,8 @@
         <div class="input-group my-3">
           <input type="text" autocomplete="off" class="border-warning border-right-0 shadow-none form-control" name="search" placeholder="Врачи, клиники, услуги">
           <select multiple size="1" data-placeholder="Город" class="form-control text-truncate chosen-select" name="city[]">
-            @foreach ($cities as $city)
-              <option class="text-truncate" value="{{ $city }}">{{ $city }}</option>
+            @foreach ($cities as $id => $name)
+              <option class="text-truncate" value="{{ $id }}">{{ $name }}</option>
             @endforeach
           </select>
           <div class="input-group-append">

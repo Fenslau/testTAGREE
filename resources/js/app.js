@@ -25,7 +25,7 @@ $(document).ready(function () {
       } else {
         $('.spinner-border-sm').removeClass('d-none');
         $('.fa-search').addClass('d-none');
-        $('.search').prop('disabled', true);
+        
         axios.post(form.action, data)
         .then(function (response) {
             $('#search-result').html(response.data.html);

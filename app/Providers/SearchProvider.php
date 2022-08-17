@@ -6,6 +6,7 @@ use Illuminate\Support\ServiceProvider;
 use App\Helpers\Contracts\SearchInterface;
 use App\Helpers\SQLsearch;
 use App\Helpers\EloqumentSearch;
+use App\Helpers\SpeedSearch;
 use App;
 
 class SearchProvider extends ServiceProvider
@@ -19,6 +20,7 @@ class SearchProvider extends ServiceProvider
     {
         App::singleton(SearchInterface::class, SQLsearch::class);
         //App::singleton(SearchInterface::class, EloqumentSearch::class);
+        //App::singleton(SearchInterface::class, SpeedSearch::class);
     }
 
     /**

@@ -14,7 +14,7 @@ class SQLsearch implements SearchInterface {
       ->leftJoin('doctor_service', 'doctors.id', '=', 'doctor_service.doctor_id')
       ->leftJoin('services', 'doctor_service.service_id', '=', 'services.id')
       ->select('cities.name AS city', 'clinics.name AS clinic', 'doctors.name AS doctor', 'services.name AS service')
-      ->whereIn('cities.name', $request->city)
+      ->whereIn('cities.id', $request->city)
       ->where(function($q) use ($request) {
           $q->where('clinics.name', 'like', '%'.$request->search.'%')
           ->orWhere('doctors.name', 'like', '%'.$request->search.'%')

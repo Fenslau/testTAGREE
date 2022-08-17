@@ -10,7 +10,7 @@ class EloqumentSearch implements SearchInterface {
     public function search($request) {
       $items = array();
 
-        $items = City::whereIn('name', $request->city)->where(function($q) use ($request) {
+        $items = City::whereIn('id', $request->city)->where(function($q) use ($request) {
           $q->whereHas('clinics', $filter1 = function($query) use ($request) {
               $query->where('name', 'like', '%'.$request->search.'%');
           })

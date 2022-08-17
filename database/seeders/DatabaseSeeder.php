@@ -20,8 +20,8 @@ class DatabaseSeeder extends Seeder
 
          City::factory(200)->create();
          Clinic::factory(1000)->create();
-         Doctor::factory(10000)->create();
-         Service::factory(100)->create();
+         Doctor::factory(100000)->create();
+         Service::factory(1000)->create();
 
         $clinics = Clinic::chunk(10000, function($clinics){
             $doctors = Doctor::chunk(10000, function($doctors) use ($clinics) {

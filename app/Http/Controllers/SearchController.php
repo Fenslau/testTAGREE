@@ -10,7 +10,7 @@ use App\Http\Requests\SearchRequest;
 class SearchController extends Controller
 {
     public function main() {
-      $cities = City::pluck('name');
+      $cities = City::pluck('name', 'id');
       return view('home', compact('cities'));
     }
 
