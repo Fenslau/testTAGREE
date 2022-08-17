@@ -7,6 +7,7 @@ use App\Models\City;
 use App\Models\Clinic;
 use App\Models\Doctor;
 use App\Models\Service;
+use Illuminate\Support\Facades\DB;
 
 class DatabaseSeeder extends Seeder
 {
@@ -17,9 +18,9 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-
-         City::factory(200)->create();
-         Clinic::factory(1000)->create();
+        DB::disableQueryLog();
+         City::factory(10000)->create();
+         Clinic::factory(100000)->create();
          Doctor::factory(100000)->create();
          Service::factory(1000)->create();
 
